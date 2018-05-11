@@ -1,0 +1,278 @@
+---------------------------------------------------------------
+[ 2018-05-11T09:09:27+08:00 ] 127.0.0.1 GET /manage/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.700001s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_admin_user' [ RunTime:0.070000s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_admin_user' [ RunTime:0.070000s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_admin_user]) AS thinkphp) AS T1 [ RunTime:0.130000s ]
+---------------------------------------------------------------
+[ 2018-05-11T09:09:39+08:00 ] 127.0.0.1 GET /manage/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002500s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_admin_user' [ RunTime:0.065001s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_admin_user' [ RunTime:0.067501s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_admin_user]) AS thinkphp) AS T1 [ RunTime:0.130002s ]
+---------------------------------------------------------------
+[ 2018-05-11T09:09:51+08:00 ] 127.0.0.1 GET /manage/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000000s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_admin_user' [ RunTime:0.070000s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_admin_user' [ RunTime:0.070000s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_admin_user]) AS thinkphp) AS T1 [ RunTime:0.130001s ]
+---------------------------------------------------------------
+[ 2018-05-11T09:09:52+08:00 ] 127.0.0.1 GET /manage/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000000s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_admin_user' [ RunTime:0.060000s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_admin_user' [ RunTime:0.070000s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_admin_user]) AS thinkphp) AS T1 [ RunTime:0.130000s ]
+---------------------------------------------------------------
+[ 2018-05-11T09:09:52+08:00 ] 127.0.0.1 GET /manage/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000000s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_admin_user' [ RunTime:0.070000s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_admin_user' [ RunTime:0.060000s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_admin_user]) AS thinkphp) AS T1 [ RunTime:0.130000s ]
+---------------------------------------------------------------
+[ 2018-05-11T09:09:53+08:00 ] 127.0.0.1 GET /manage/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000000s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_admin_user' [ RunTime:0.070001s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_admin_user' [ RunTime:0.060000s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_admin_user]) AS thinkphp) AS T1 [ RunTime:0.130000s ]
+---------------------------------------------------------------
+[ 2018-05-11T09:09:53+08:00 ] 127.0.0.1 GET /manage/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.430001s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_admin_user' [ RunTime:0.060000s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_admin_user' [ RunTime:0.060000s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_admin_user]) AS thinkphp) AS T1 [ RunTime:0.120000s ]
+---------------------------------------------------------------
+[ 2018-05-11T09:09:53+08:00 ] 127.0.0.1 GET /manage/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.430000s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_admin_user' [ RunTime:0.060000s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_admin_user' [ RunTime:0.070000s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_admin_user]) AS thinkphp) AS T1 [ RunTime:0.120001s ]
+---------------------------------------------------------------
+[ 2018-05-11T09:09:53+08:00 ] 127.0.0.1 GET /manage/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000000s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_admin_user' [ RunTime:0.070000s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_admin_user' [ RunTime:0.060000s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_admin_user]) AS thinkphp) AS T1 [ RunTime:0.130000s ]
+---------------------------------------------------------------
+[ 2018-05-11T09:09:53+08:00 ] 127.0.0.1 GET /manage/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.440000s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_admin_user' [ RunTime:0.060001s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_admin_user' [ RunTime:0.060000s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_admin_user]) AS thinkphp) AS T1 [ RunTime:0.120000s ]
+---------------------------------------------------------------
+[ 2018-05-11T09:09:54+08:00 ] 127.0.0.1 GET /manage/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.430000s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_admin_user' [ RunTime:0.060000s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_admin_user' [ RunTime:0.060000s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_admin_user]) AS thinkphp) AS T1 [ RunTime:0.120001s ]
+---------------------------------------------------------------
+[ 2018-05-11T09:09:54+08:00 ] 127.0.0.1 GET /manage/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000000s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_admin_user' [ RunTime:0.060000s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_admin_user' [ RunTime:0.060000s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_admin_user]) AS thinkphp) AS T1 [ RunTime:0.120000s ]
+---------------------------------------------------------------
+[ 2018-05-11T10:29:28+08:00 ] 127.0.0.1 GET /manage/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.347020s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_admin_user' [ RunTime:0.061004s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_admin_user' [ RunTime:0.061003s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_admin_user]) AS thinkphp) AS T1 [ RunTime:0.120006s ]
+---------------------------------------------------------------
+[ 2018-05-11T10:30:19+08:00 ] 127.0.0.1 GET /manage/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_admin_user' [ RunTime:0.061004s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_admin_user' [ RunTime:0.062003s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_admin_user]) AS thinkphp) AS T1 [ RunTime:0.121007s ]
+---------------------------------------------------------------
+[ 2018-05-11T10:31:25+08:00 ] 127.0.0.1 GET /manage/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.353020s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_admin_user' [ RunTime:0.066004s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_admin_user' [ RunTime:0.066003s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_admin_user]) AS thinkphp) AS T1 [ RunTime:0.130008s ]
+---------------------------------------------------------------
+[ 2018-05-11T10:35:11+08:00 ] 127.0.0.1 GET /manage/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.462026s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_admin_user' [ RunTime:0.059003s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_admin_user' [ RunTime:0.059004s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_admin_user]) AS thinkphp) AS T1 [ RunTime:0.116007s ]
+---------------------------------------------------------------
+[ 2018-05-11T10:38:30+08:00 ] 127.0.0.1 POST /manage/login/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.326018s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_user' [ RunTime:0.060004s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_user' [ RunTime:0.060003s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_user] WHERE  [TEL] = '13999999999'  AND [Store_pass] = 'e10adc3949ba59abbe56e057f20f883e') AS thinkphp) AS T1 WHERE (T1.ROW_NUMBER BETWEEN 1 AND 1) [ RunTime:0.119007s ]
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_store' [ RunTime:0.119006s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_store' [ RunTime:0.061004s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_store] WHERE  [TEL] = '13999999999'  AND [Store_pass] = 'e10adc3949ba59abbe56e057f20f883e') AS thinkphp) AS T1 WHERE (T1.ROW_NUMBER BETWEEN 1 AND 1) [ RunTime:0.119007s ]
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_cashier' [ RunTime:0.120007s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_cashier' [ RunTime:0.060003s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_cashier] WHERE  [TEL] = '13999999999'  AND [Cashier_pass] = 'e10adc3949ba59abbe56e057f20f883e') AS thinkphp) AS T1 WHERE (T1.ROW_NUMBER BETWEEN 1 AND 1) [ RunTime:0.119007s ]
+---------------------------------------------------------------
+[ 2018-05-11T10:38:47+08:00 ] 127.0.0.1 POST /manage/login/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_user' [ RunTime:0.060004s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_user' [ RunTime:0.061003s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_user] WHERE  [TEL] = '18798075208'  AND [Store_pass] = 'e10adc3949ba59abbe56e057f20f883e') AS thinkphp) AS T1 WHERE (T1.ROW_NUMBER BETWEEN 1 AND 1) [ RunTime:0.119006s ]
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_store' [ RunTime:0.119007s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_store' [ RunTime:0.060004s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_store] WHERE  [TEL] = '18798075208'  AND [Store_pass] = 'e10adc3949ba59abbe56e057f20f883e') AS thinkphp) AS T1 WHERE (T1.ROW_NUMBER BETWEEN 1 AND 1) [ RunTime:0.118007s ]
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_cashier' [ RunTime:0.120007s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_cashier' [ RunTime:0.060004s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_cashier] WHERE  [TEL] = '18798075208'  AND [Cashier_pass] = 'e10adc3949ba59abbe56e057f20f883e') AS thinkphp) AS T1 WHERE (T1.ROW_NUMBER BETWEEN 1 AND 1) [ RunTime:0.120007s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  [store_code] FROM [tbl_store] WHERE  [TEL] = '18798075208') AS thinkphp) AS T1 WHERE (T1.ROW_NUMBER BETWEEN 1 AND 1) [ RunTime:0.119007s ]
+---------------------------------------------------------------
+[ 2018-05-11T10:38:51+08:00 ] 127.0.0.1 GET /manage/index/right.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_store' [ RunTime:0.060004s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_store' [ RunTime:0.060003s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_store] WHERE  [user_code] = '18798075208') AS thinkphp) AS T1 [ RunTime:0.118007s ]
+---------------------------------------------------------------
+[ 2018-05-11T10:38:53+08:00 ] 127.0.0.1 GET /manage/member/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] sqlsrv:Database=XiaoCaoPos;Server=114.215.197.61
+[ sql ] [ SQL ] SELECT   column_name,   data_type,   column_default,   is_nullable
+        FROM    information_schema.tables AS t
+        JOIN    information_schema.columns AS c
+        ON  t.table_catalog = c.table_catalog
+        AND t.table_schema  = c.table_schema
+        AND t.table_name    = c.table_name
+        WHERE   t.table_name = 'tbl_cashier' [ RunTime:0.062003s ]
+[ sql ] [ SQL ] SELECT column_name FROM information_schema.key_column_usage WHERE table_name='tbl_cashier' [ RunTime:0.060004s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY rand()) AS ROW_NUMBER FROM (SELECT  COUNT(*) AS tp_count FROM [tbl_cashier] WHERE  [Cashier_code] > '0'  AND [store_code] = null) AS thinkphp) AS T1 WHERE (T1.ROW_NUMBER BETWEEN 1 AND 1) [ RunTime:0.119007s ]
+[ sql ] [ SQL ] SELECT T1.* FROM (SELECT thinkphp.*, ROW_NUMBER() OVER ( ORDER BY Cashier_code ASC) AS ROW_NUMBER FROM (SELECT  * FROM [tbl_cashier] WHERE  [Cashier_code] > '0'  AND [store_code] = null) AS thinkphp) AS T1 WHERE (T1.ROW_NUMBER BETWEEN 0 + 1 AND 0 + 14) [ RunTime:0.119007s ]
