@@ -1,0 +1,161 @@
+<include file="Public:header" />
+<div class="container">
+	<div class="row" style="margin-top: 20px;padding: 20px;">
+		<form class="layui-form layui-form-pane">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+			      <label class="layui-form-label">店面名称</label>
+			      <div class="layui-input-inline">
+			        <input id="store_name" name="store_name" lay-verify="required" autocomplete="off" placeholder="请输入店面名称" class="layui-input" type="text" value="{$info.store_name|default=''}">
+			      </div>
+			    </div>
+			    <div class="layui-inline">
+			      <label class="layui-form-label">所属企业</label>
+			      <div class="layui-input-inline">
+				      	<input id="stname" name="qiyue" lay-verify="required" autocomplete="off" placeholder="请输入店面名称" class="layui-input" type="text" {notempty name="$info.TEL"}value="{$info.TEL,'store_name'|getuserinfo}"{/notempty} >
+			      	<div id="word"></div>
+			      </div>
+			    </div>							
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+			      <label class="layui-form-label">门店账号</label>
+			      <div class="layui-input-inline">
+			        <input id="TEL" name="TEL" lay-verify="required|tel" {notempty name="$info.TEL"}disabled{/notempty} autocomplete="off" placeholder="请输入企业密码" class="layui-input" type="text" value="{$info.TEL|default=''}">
+			      </div>
+			    </div>
+				<div class="layui-inline">
+			      <label class="layui-form-label">门店密码</label>
+			      <div class="layui-input-inline">
+			        <input name="Store_pass" {empty name="$info.Store_pass"}lay-verify="required|pass"{/empty} autocomplete="off" placeholder="请输入企业密码" class="layui-input" type="text" value="">
+			      </div>
+			    </div>
+
+			</div>			
+			<div class="layui-form-item">
+				<div class="layui-inline">
+			      <label class="layui-form-label">联系人</label>
+			      <div class="layui-input-inline">
+			        <input id="Lianxir" name="Lianxir"  autocomplete="off" placeholder="请输入联系人" class="layui-input" type="text" value="{$info.Lianxir|default=''}">
+			      </div>
+			    </div>
+
+			    <div class="layui-inline">
+			      <label class="layui-form-label">用户状态</label>
+			      <div class="layui-input-inline">
+			      	<input name="Statue" title="启用" {eq name="$info.Statue|default=''" value="1"}checked{/eq}  type="checkbox" value="1">
+			      </div>
+			    </div>
+			</div>			
+			<div class="layui-form-item"> <label class="layui-form-label">所属地区</label>
+				<div class="layui-input-inline"> 
+				<select id="prov" name="position_id" lay-filter="prov"></select>
+				</div>
+				<div  class="layui-input-inline"> 
+				<select id="city" name="position_id1" lay-filter="city"></select>
+				</div>
+				<div  class="layui-input-inline"> 
+				<select id="area" name="position_id2"></select>
+				</div>
+			</div>
+			<div class="layui-form-item"> <label class="layui-form-label">门店地址</label>
+				<div class="layui-input-block"> <input id="Address" name="Address" autocomplete="off" lay-verify="required"  placeholder="请输入企业地址" class="layui-input" type="text" value="{$info.Address|default=''}"> </div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+			      <label class="layui-form-label">最大终端数</label>
+			      <div class="layui-input-inline">
+			        <input name="client_number" lay-verify="required" autocomplete="off" placeholder="收银同时在线最大终端数" class="layui-input" type="text" value="{$info.client_number|default=''}">
+			      </div>
+			    </div>
+			    <div class="layui-inline">
+			      <label class="layui-form-label">邮箱</label>
+			      <div class="layui-input-inline">
+			        <input id="email" name="email" lay-verify="email" autocomplete="off" placeholder="请输入邮箱" class="layui-input" type="text" value="{$info.email|default=''}">
+			      </div>
+			    </div>
+			</div>
+
+			<div class="layui-form-item"> <label class="layui-form-label">设备</label>
+			    <div class="layui-input-block">
+			    	{volist name="shebei" id="v"}
+				      <input name="sebei[]" lay-skin="primary" title="{$v.name}" value="{$v.ID}" {notempty name="$info.sebeiIDs"} {$v.ID,$info.sebeiIDs|inarr} {/notempty}  type="checkbox">
+				    {/volist}
+				     
+					
+		  	    </div>
+
+			</div>
+ 
+			<div class="layui-form-item">
+				<div class="layui-inline">
+			      <label class="layui-form-label">创建时间</label>
+			      <div class="layui-input-inline">
+			        <input id="time-start" name="create_date" lay-verify="required" autocomplete="off" placeholder="请输入用户创建时间" class="layui-input" type="text" value="{$info.create_date|default=times()}">
+			      </div>
+			    </div>
+			    <div class="layui-inline">
+			      <label class="layui-form-label">失效时间</label>
+			      <div class="layui-input-inline">
+			        <input id="time-end" name="End_date" lay-verify="required" autocomplete="off" class="layui-input itemtime"  placeholder="请输入用户失效时间" type="text" value="{$info.End_date|default='2099-01-01'}">
+			      </div>
+			    </div>
+			</div>
+			
+			<div class="layui-form-item">
+				<div class="layui-input-block text-center"><a class="layui-btn" lay-submit lay-filter="send" dataurl="{:URL('shop/addshop')}">立即提交</a> <button type="reset" class="layui-btn layui-btn-primary">重置</button> </div>
+			</div>
+				<input type="hidden" name="user_code" id="user_code" value="{$info.user_code|default=''}" />
+				<input type="hidden" name="number_code" id="number_code" value="{$info.number_code|default=''}" />
+				{notempty name="info.TEL"}
+					<input type="hidden" name="id" value="{$info.TEL|default=''}" />			
+				{/notempty}
+
+		</form>			
+
+	</div>
+</div>
+<script>
+	var arrdata='{$diqu}';
+	var jsonurl="{:URL('shop/jsonarr')}";
+	
+	function prov(arr,fid,ck){
+		var html='<option value="">请选择</option>';
+		var data=JSON.parse(arr);
+		$.each(data, function(key,val) {
+			if(val.fuid==fid){
+				if(val.ID==ck){var sed='selected';}
+			html += '<option value="'+val.ID+'" '+sed+'>'+val.name+'</option>';
+			}
+		});
+		return html;
+	};	
+layui.use(['form', 'layer','element'], function() {
+	var $ = layui.jquery,		
+		form = layui.form,
+		layer = layui.layer,	
+		element = layui.element;
+		
+
+	form.on('select(prov)', function(data){			
+		$('#city').html(prov(arrdata,data.value,'{$info.position_id|default=""}'));
+		//layer.msg(data.value);
+		form.render();
+	});
+	form.on('select(city)', function(data){			
+		$('#area').html(prov(arrdata,data.value,'{$info.position_id1|default=""}'));
+		//layer.msg(data.value);
+		form.render();
+	});
+
+});
+var pid='{$info.position_id|default=""}', pid1='{$info.position_id1|default=""}',pid2='{$info.position_id2|default=""}';
+$('#prov').html(prov(arrdata,0,pid));
+$('#city').html(prov(arrdata,pid,pid1));
+if(pid1>0) $('#area').html(prov(arrdata,pid1,pid2));
+
+
+</script>
+
+<include file="Public:footer" />

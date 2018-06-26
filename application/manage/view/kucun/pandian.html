@@ -1,0 +1,54 @@
+<div class="layui-fluid">
+	<div class="layui-row">
+			<div class="layui-col-sm12">
+			
+			<form id="headform" class="layui-form layui-form-pane" method="get" method="{:URL('goods/index')}">
+			<div class="layui-form-item">
+
+				<div class="layui-input-inline" style="width:340px"><input id="randtime" type="text" name="keyword" class="layui-input"  placeholder="时间选择" value="{$timearr}" /></div>
+				<div class="layui-input-inline"><button id="submit" type="submit" name="submit" class="layui-btn" ><i class="fa fa-search"></i>搜索</button></div>
+				
+			</div>				
+			</form>
+				
+			</div>
+	
+			<div id="res">
+			
+			</div>
+			
+			<table class="layui-table layui-form">
+				<thead class="text-center ">
+					<th width="40">序号</th>					
+					<th>盘点时间</th>					
+					<th width="140">盘点人</th>
+					<th width="60">盈亏数量</th>
+					<th width="60">状态</th>
+					<th width="150">查看明细</th>
+				</thead>
+				<tbody>
+					{empty name="$pdlist"}
+					<tr><td colspan="6" ><h2 class="f-30 pd-10 red text-center">暂无数据！</h2>  </td></tr>
+					{/empty}
+					{volist name="pdlist" id="v"}
+					<tr class="">
+						<td>{$key + 1}</td>
+						<td>{$v.create_date}</td>
+						<td>{$v.cashier_code}</td>
+						<td>{$v.count}</td>
+						<td>{eq name="$v.statue" value="2"}已审批{else/}待审批{/eq}</td>
+						<td><a class="layui-btn layui-btn-sm add" title="盘点明细" dataurl="{:URL('kucun/details',array('id'=>$v.Inventory_code,'dpid'=>$v.Store_code))}">明细</a></td>
+					</tr>
+					{/volist}
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="10" class="text-right">{$pdlist->render()}</td>
+					</tr>
+				</tfoot>
+			</table>
+			
+			
+		</div>	
+	</div>
+</div>

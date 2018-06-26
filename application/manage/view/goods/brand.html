@@ -1,0 +1,30 @@
+<div class="layui-fluid">	
+		
+			<form id="headform" class="layui-form layui-form-pane" method="get" method="{:URL('goods/index')}">
+			<div class="layui-form-item">
+				
+				<div class="layui-input-inline"><input type="text" name="keyword" class="layui-input" placeholder="请输入品名或条码" /></div>
+				<div class="layui-input-inline"><button type="submit" name="submit" class="layui-btn" >搜索</button></div>
+				
+				<a class="btn btn-primary f-r addpro" title="品牌" dataurl="{:URL('goods/addpp')}">添加品牌</a>
+			</div>				
+			</form>
+		
+		<div id="adddata" class="layui-row">
+		{volist name="brandlist" id="v"}
+		<div class="layui-col-sm2">
+			<div class="brandbox">
+				<h2>{$v.name}</h2>
+				<div class="layui-btn-group edit" style="width: 100%;">
+					<a class="layui-btn addpro" style="width:50%" dataname="{$v.name}" dataid="{$v.ID}" title="品牌" dataurl="{:URL('goods/addpp')}"><i class="fa fa-edit"></i>编辑</a>
+				    <a class="layui-btn layui-btn-danger del" arrid="{$v.ID}" dataurl="{:URL('goods/delsppp')}" style="width:50%"><i class="fa fa-trash"></i>删除</a>
+				</div>
+			</div>
+		</div>	
+		
+		{/volist}
+		<div class="layui-col-sm12 text-right">
+			{$brandlist->render()}
+		</div>
+	</div>
+</div>

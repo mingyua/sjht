@@ -1,0 +1,75 @@
+<script src="__MANAGE__/js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+
+<div class="layui-fluid">
+	<div class="layui-row">
+		<div class="layui-col-sm12">
+			<form id="headform" class="layui-form layui-form-pane" method="get" method="{:URL('sale/analyse')}">
+				<div class="layui-form-item">
+					<div class="layui-input-inline">
+						<select name="cate">
+							<option value="1" {eq name="$cate" value="1"}selected{/eq}>按商品分类</option>
+							<option value="2" {eq name="$cate" value="2"}selected{/eq}>按商品品牌</option>
+							<option value="3" {eq name="$cate" value="3"}selected{/eq}>按收银员</option>
+							<option value="4" {eq name="$cate" value="4"}selected{/eq}>按支付方式</option>
+							<option value="5" {eq name="$cate" value="5"}selected{/eq}>是否会员</option>
+						</select>
+					</div>
+					<div class="layui-input-inline" style="width: 320px;"><input id="randtime" type="text" name="time" class="layui-input" placeholder="请选择日期" value="{$time}" /></div>
+					<div class="layui-input-inline"><button id="submit" type="submit" name="submit" class="layui-btn"><i class="fa fa-search"></i>统计分析</button></div>
+				</div>
+			</form>
+		</div>
+		<div  class="layui-col-sm12">
+			<div id="main" style="width: 100%;height:600px;"></div>
+		</div>
+		
+	</div>
+</div>
+
+
+<script>
+
+setTimeout(function(){
+var myChart = echarts.init(document.getElementById('main'));	
+	
+option = {
+    title : {
+        text: '占比统计（营业额）--{$title}',
+        subtext: '',
+        x:'center'
+    },
+    tooltip : {
+    	show:false,
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        data: {$name}
+    },
+    series : [
+        {
+            name: '访问来源',
+            type: 'pie',
+            selectedMode: 'single',
+            radius : '70%',
+            center: ['50%', '60%'],
+            label:{
+            	show:true,
+            	formatter: "{b} : {c}元 ({d}%)",
+            },
+            data:{$data},
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+myChart.setOption(option);	
+},100);	
+</script>

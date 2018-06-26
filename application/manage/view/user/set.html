@@ -1,0 +1,25 @@
+<div class="layui-fluid">
+	<div class="row" style="margin-top: 20px;">
+		<div id="headform"><span class="title">会员设置</span></div>
+		<div class="layui-col-sm-offset4 layui-col-sm4">
+			<form class="layui-form layui-form-pane">
+				<div class="layui-form-item"> <label class="layui-form-label">主账号</label>
+					<div class="layui-input-block"> <input name="user_code" autocomplete="off" placeholder="请输入主账号"  disabled class="layui-input" type="text" value="{:session('uname')}"> </div>
+				</div>	
+				<div class="layui-form-item"> <label class="layui-form-label">消费比例</label>
+					<div class="layui-input-block"> <input name="every_time_nsume" autocomplete="off" placeholder="消费多少元积1分"  class="layui-input" type="text" value="{$set.every_time_nsume|default=''}"> </div>
+				</div>	
+				<div class="layui-form-item"> <label class="layui-form-label">是否启用</label>
+					<div class="layui-input-block"> 
+						<input {notempty  name="set.qy_flag"}{eq name="set.qy_flag" value="1"}checked{/eq}{/notempty} name="qy_flag" lay-skin="switch" lay-filter="switchTest" lay-text="启用|禁用" type="checkbox" >
+					</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block mt-10"><a class="layui-btn" lay-submit lay-filter="send" dataurl="{:URL('user/set')}">立即提交</a>  </div>
+			</div>
+				</div>	
+				
+			</form>
+			
+		</div>
+	</div>
+</div>

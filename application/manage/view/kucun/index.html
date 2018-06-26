@@ -1,0 +1,61 @@
+<div class="layui-fluid">
+	<div class="layui-row">
+			<div class="layui-col-sm12">
+			
+			<form id="headform" class="layui-form layui-form-pane" method="get" method="{:URL('goods/index')}">
+			<div class="layui-form-item">
+
+				<div class="layui-input-inline"><input type="text" name="keyword" class="layui-input" placeholder="请输入品名或条码" value="" /></div>
+				<div class="layui-input-inline"><button id="submit" type="submit" name="submit" class="layui-btn" ><i class="fa fa-search"></i>搜索</button></div>
+				
+
+			</div>				
+			</form>
+				
+			</div>
+	
+			<div id="res">
+			
+			</div>
+			
+			<table class="layui-table layui-form">
+				<thead class="text-center ">
+					<th>序号</th>					
+					<th>商品名称</th>					
+					<th width="140">条码</th>
+					<th>分类</th>
+					<th >供货商</th>
+					<th width="60">现有库存</th>
+					<th width="60">单位</th>
+					<th width="60">库存下限</th>
+					<th >生产日期</th>
+					
+					<th width="150">保质情况</th>
+				</thead>
+				<tbody>
+					{volist name="kclist" id="v"}
+					<tr {elt name="$v.Store_amount" value="0"}style="background: #F7ECB5;"{/elt} >
+						<td>{$key + 1}</td>
+						<td>{$v.commodity_name}</td>
+						<td>{$v.commodity_code}</td>
+						<td>{$v.kinds.cpmmodity_type_name}</td>
+						<td>{$v.suppliers_code}</td>
+						<td>{$v.Store_amount}</td>
+						<td>{$v.unit_name}</td>
+						<td>{$v.stock_min}</td>
+						<td>{$v.production_date}</td>
+						<td>{$v.Shelf_life}天</td>
+					</tr>
+					{/volist}
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="10" class="text-right">{$kclist->render()}</td>
+					</tr>
+				</tfoot>
+			</table>
+			
+			
+		</div>	
+	</div>
+</div>

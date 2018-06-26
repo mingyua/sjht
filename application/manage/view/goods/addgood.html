@@ -1,0 +1,790 @@
+<include file="Public:header" />
+<script type="text/javascript" src="__MANAGE__/js/pinying.js"></script>
+<div class="pl-10">
+	<div class="row" style="margin-top: 20px;padding: 20px;">
+		<form class="layui-form layui-form-pane">
+			<div class="layui-col-sm12">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+			      <label class="layui-form-label"><i class="fa fa-asterisk red"></i>商品条码</label>
+			      <div class="layui-input-inline" style="width: 300px;">
+			        <input id="code" name="commodity_code" lay-verify="required" {notempty name="$info"}readonly="readonly" {/notempty} autocomplete="off" placeholder="请输入商品条形码" class="layui-input bixu" type="text" value="{$info.commodity_code|default=''}">
+			      	{empty name="$info"}
+			      	<span data-method="pushcode" class="inputright layui-bg-green layui-btn">生成</span>
+			      	{/empty}
+			      </div>
+			    </div>
+				<div class="layui-inline">
+			      <label class="layui-form-label">商品分类</label>
+			      <div class="layui-input-inline">
+			      	<select id="cateid" name="commodity_type_id">
+			      		{volist name="cate" id="v"}
+			      		<option value="{$v.id}" {notempty name="$info"}{eq name="$info.commodity_type_id" value="$v.id"}selected{/eq}  {/notempty} >{$v.cpmmodity_type_name}</option>
+			      		{/volist}
+			      	</select>
+
+			      </div>
+			    </div>
+				<div class="layui-inline">
+			      <label class="layui-form-label"><i class="fa fa-asterisk red"></i>商品单位</label>
+			      <div class="layui-input-inline">
+				      	<input id="unit" name="unit_name"  lay-verify="required" autocomplete="off" placeholder="请输入商品单位" class="layui-input bixu" type="text" value="{$info.unit_name|default=''}" >
+			      </div>
+			    </div>
+			    
+			</div>	
+				
+				
+			<div class="layui-form-item">
+				<div class="layui-inline">
+			      <label class="layui-form-label"><i class="fa fa-asterisk red"></i>商品名称</label>
+			      <div class="layui-input-inline">
+			        <input id="txtChinese" onKeyUp="query()" name="commodity_name" lay-verify="required" autocomplete="off" placeholder="请输入商品名称" class="layui-input" type="text" value="{$info.commodity_name|default=''}">
+			     </div>
+			    </div>
+			    <div class="layui-inline">
+			      <label class="layui-form-label"><i class="fa fa-asterisk red"></i>成本价</label>
+			      <div class="layui-input-inline">
+				      	<input id="cbjg" name="in_price"  lay-verify="required" autocomplete="off" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'');" placeholder="请输入成本价,只能输入数字" class="layui-input" type="text" {notempty name="$info.sell_price"}value="{$info.in_price|default=''}"{/notempty} >
+			      </div>
+			    </div>
+			    <div class="layui-inline">
+			      <label class="layui-form-label"><i class="fa fa-asterisk red"></i>售价</label>
+			      <div class="layui-input-inline">
+				      	<input id="salej" name="sell_price"  lay-verify="required" autocomplete="off" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'');" placeholder="请输入售价,只能输入数字" class="layui-input" type="text" {notempty name="$info.sell_price"}value="{$info.sell_price|default=''}"{/notempty} >
+			      				      	
+			      </div>
+			    </div>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+			      <label class="layui-form-label"><i class="fa fa-asterisk red"></i>商品库存</label>
+			      <div class="layui-input-inline">
+			        <input id="spkucun" name="Store_amount" lay-verify="required" autocomplete="off" placeholder="请输入商品库存" class="layui-input" type="text" value="{$info.Store_amount|default='0'}">
+			      </div>
+			    </div>
+				<div class="layui-inline">
+			      <label class="layui-form-label"><i class="fa fa-asterisk red"></i>商品属性</label>
+			      <div class="layui-input-inline">
+			        <input id="guigeattr" name="guige" lay-verify="required" autocomplete="off" placeholder="请输入商品属性" class="layui-input" type="text" value="{$info.guige|default=''}">
+			      </div>
+			    </div>
+				<div class="layui-inline">
+			      <label class="layui-form-label">商品积分</label>
+			      <div class="layui-input-inline">
+			        <input  name="Integral_flag"  autocomplete="off" placeholder="请输入商品积分" class="layui-input" type="text" value="{$info.code|default='0'}">
+			      </div>
+			    </div>
+			</div>	
+			
+
+			<div id="attrnone" style="display: none;">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+			      <label class="layui-form-label">拼音码</label>
+			      <div class="layui-input-inline">
+			        <input id="py" name="py_code" lay-verify="" autocomplete="off" placeholder="请输入拼音码" class="layui-input" type="text" value="{$info.py_code|default=''}">
+			      </div>
+			    </div>
+				<div class="layui-inline">
+			      <label class="layui-form-label">品牌</label>
+			      <div class="layui-input-inline">
+			        <input id="sppp" name="shangpinppID" lay-verify="" autocomplete="off" placeholder="请输入商品品牌" class="layui-input" type="text" value="{$info.shangpinppID|default=''}">
+			      </div>
+			    </div>
+				<div class="layui-inline">
+			      <label class="layui-form-label">库存预警值</label>
+			      <div class="layui-input-inline">
+			        <input  name="stock_min"  autocomplete="off" placeholder="请输入库存预警值" class="layui-input" type="text" value="{$info.stock_min|default='0'}">
+			      </div>
+			    </div>
+			</div>				
+			
+			<div class="layui-form-item">
+				<div class="layui-inline">
+			      <label class="layui-form-label">供应商</label>
+			      <div class="layui-input-inline">
+			        <input id="changjia" name="suppliers_code" lay-verify="" autocomplete="off" placeholder="请输入供应商" class="layui-input" type="text" value="{$info.suppliers_code|default=''}">
+			      </div>
+			    </div>
+				<div class="layui-inline">
+			      <label class="layui-form-label">会员折扣</label>
+			      <div class="layui-input-inline">
+						 <input name="number_Discount_flag" title="折扣" checked type="checkbox" value="1">
+			      </div>
+			    </div>
+				<div class="layui-inline">
+			      <label class="layui-form-label">保质期/天</label>
+			      <div class="layui-input-inline">
+			        <input id="baozhiq" name="Shelf_life"  autocomplete="off" placeholder="请输入保质期" class="layui-input" type="text" value="{$info.Shelf_life|default='30'}">
+			      </div>
+			    </div>
+			</div>				
+			
+			<div class="layui-form-item">
+				<div class="layui-inline">
+			      <label class="layui-form-label">生产时间</label>
+			      <div class="layui-input-inline">
+			        <input name="production_date" lay-verify="" autocomplete="off" placeholder="请输入生产时间" class="layui-input itemtime" type="text" value="{$info.production_date|default=times()}">
+			      </div>
+			    </div>
+				<div class="layui-inline">
+			      <label class="layui-form-label">商品状态</label>
+			      <div class="layui-input-inline">
+			          <input checked name="statue" lay-skin="switch" lay-filter="switchTest" lay-text="启用|禁用" value="1" type="checkbox">
+			      </div>
+			    </div>
+			</div>	
+			</div>
+			<div class="layui-form-item text-center">
+				<div class="layui-inline text-center">
+			       <a id="updown" class="layui-btn layui-bg-blue">显示更多</a>
+			       <a id="duberclick" data-method="addattr" class="layui-btn">添加属性</a>
+			       <a id="duberck" data-method="addunit" class="layui-btn">添加副单</a>			      
+			    </div>
+				
+			</div>
+			<div class="layui-form-item">	
+
+				<table id="demo"  lay-filter="test">
+					
+					
+				</table>		
+				
+			</div>
+			
+			<div class="layui-form-item">				
+			      <label class="layui-form-label">商品备注</label>
+			      <div class="layui-input-block">
+			        <input  name="remark" lay-verify="" autocomplete="off" placeholder="请输入商品备注" class="layui-input" type="text" value="{$info.remark|default=''}">
+			      </div>
+			</div>
+			</div>
+
+			
+			<div class="layui-form-item">
+				<div class="layui-input-block text-center"><a class="layui-btn"  data-method="allpost">立即提交</a>  </div>
+			</div>
+				<input type="hidden" id="maxcode"  value="" />				
+				<input type="hidden" name="user_code"  value="{$Think.session.uid|default=''}" />				
+				<input type="hidden" name="Store_code"  value="{$Think.session.stcode|default=''}" />				
+				{notempty name="info.id"}
+					<input type="hidden" name="id" value="{$info.id|default=''}" />			
+				{/notempty}
+			<textarea id="msg" class="layui-textarea hidden" style="height: 300px;"></textarea>
+			
+			<input type="hidden" class="tags" value="{$info.unit_name|default=''}" />
+			<input type="hidden" class="guigeattr" value="{$info.guige|default=''}" />
+			{notempty name="$info"}
+			<input type="hidden" name="edit" value="edit" />
+			{/notempty}
+		</form>			
+
+		
+	</div>
+</div>
+<script type="text/html" id="settool">
+  {{#  if(d.hide == 'add-main'){ }}
+    <a class="layui-btn layui-btn-sm  layui-btn-normal" lay-event="add">添加副单位</a>
+     <a class="layui-btn layui-btn-sm layui-btn-danger" lay-event="del">删除</a>
+  {{#  } }}
+  {{#  if(d.hide == 'add-attr'){ }}
+    <a class="layui-btn layui-btn-sm  layui-btn-normal" lay-event="add">添加副单位</a>
+    <a class="layui-btn layui-btn-danger  layui-btn-sm" lay-event="del">删除</a>
+  {{#  } }}
+    {{#  if(d.hide == 'add-unit'){ }}
+    <a class="layui-btn layui-btn-sm layui-btn-danger" lay-event="del">删除</a>
+  {{#  } }}
+</script>
+<script>
+function filter_array(array) {    
+  return array.filter(item=>item);   
+}   
+function FillZero(p) {  
+    return new Array(5 - (p + '').length + 1).join('0') + p;  
+} 
+function checkpost(){
+	if(!document.getElementById('code').value || !document.getElementById('unit').value || !document.getElementById('txtChinese').value || !document.getElementById('cbjg').value || !document.getElementById('salej').value ||  !document.getElementById('guigeattr').value || !document.getElementById('spkucun').value){
+		
+		return 0;
+	}else{
+		return 1;
+	}
+	
+}
+function pushdata(type,sptype,j,oldData,one,two,ncode,attr,id){
+		
+	var num=Number(oldData.length)+1,ckdiv1="td:eq("+one+")",ckdiv2="td:eq("+two+")";
+	
+if(oldData.length<=0){        	
+	var data1={"commodity_code":j.commodity_code,"commodity_name":j.commodity_name,"guige":j.guige,"in_price":j.in_price,"sell_price":j.sell_price,"unit_name":j.unit_name,"unit_name_value":"1"+j.unit_name+"=1"+j.unit_name,"hide":"add-main","z_commodity_code":"0","SPType":0,"sort":num,"id":num};          	
+	setTimeout(function(){
+		if(type=='add-unit'){			
+			document.getElementById('duberck').click();
+		}else{			
+			document.getElementById('duberclick').click();
+		}
+		
+	},1000);
+	
+}else{
+	
+	   var code,fid,maxcode,mainid=document.getElementById('code').value;
+        var c=[];
+        $.each(oldData,function(index,item){					       		
+       		c.push(item.commodity_code);					       				           
+        }); 
+        
+        //alert(JSON.stringify(filter_array(c)));
+		maxcode=Math.max.apply(null, filter_array(c));	   
+	   
+	   
+	   if(ncode==0){
+	   	fid=mainid;
+	   }else{
+	   	fid=ncode;
+	   }
+	   if(attr){
+	   	var guige=attr;
+	   }else{
+	   	var guige=j.guige;
+	   }
+	   if(mainid.length<6){
+	   	       	
+				code=FillZero(Number(maxcode)+1);   
+				
+	   }else{
+	   			code='请输入商品条码';    
+	   }
+ 
+		if(type=='add-attr'){
+	 		newsort=Number(num);
+	 	}
+		if(id){
+			newsort=Number(id)+0.1;
+		}else{
+	 		newsort=Number(num)+0.1;
+	 	}
+ 	
+	var data1={"commodity_code":code,"commodity_name":j.commodity_name,"guige":guige,"in_price":j.in_price,"sell_price":j.sell_price,"unit_name":j.unit_name,"unit_name_value":"1"+j.unit_name+"=1"+j.unit_name,"hide":""+type+"","z_commodity_code":fid,"SPType":sptype,"sort":newsort,"id":num};          	
+    
+
+	$('.tags').val($('#unit').val());
+	$('.guigeattr').val($('#guigeattr').val());
+	
+}	
+return data1;
+}
+$(function(){
+	$('#updown').click(function(){
+		var _this=$(this);
+		$('#attrnone').slideToggle(100,function(){
+			 if($(this).is(':hidden')){ 
+			 	_this.text('显示更多');
+			 }else{
+			 	_this.text('隐藏更多');
+			 }
+		});
+		 
+		 
+	});	
+});
+layui.use(['table','layer','form'], function(){
+  var table = layui.table,$ = layui.jquery, layer = layui.layer, form = layui.form;
+  var datas={$data};
+ var active = {
+  	addattr: function(){
+  		if(checkpost()===0){
+  			layer.msg('*为必填项');
+  			return false;
+  		}
+	
+	if(document.getElementById('duberck')){
+  			document.getElementById('duberck').remove();
+  		}
+  		var oldData = table.cache["demo"];  
+		var data=$("form").serializeArray();     
+        var j = {},c={};
+        $.each(data,function(index,item){					       		
+       		j[item.name] = item.value;					       				           
+        }); 
+        
+
+        oldData.push(pushdata('add-attr',1,j,oldData,2,0,0));  
+        oldData.sort(function(a,b){
+            return a.id-b.id;
+        });        
+        oldData.sort(function(a,b){
+            return a.sort-b.sort;
+        });
+        
+          table.reload('demo',{  
+              data : oldData  
+          }); 
+          
+         $('#msg').val(JSON.stringify(oldData));
+  	},addunit: function(obj){
+  		if(checkpost()===0){
+  			layer.msg('*为必填项');
+  			return false;
+  		}
+		
+  		var oldData = table.cache["demo"];  
+		var data=$("form").serializeArray();     
+        var j = {};
+        $.each(data,function(index,item){					       		
+       		j[item.name] = item.value;	
+       		
+        });
+
+
+        oldData.push(pushdata("add-unit",2,j,oldData,4,0,0));  
+        oldData.sort(function(a,b){
+            return a.id-b.id;
+        });        
+        oldData.sort(function(a,b){
+            return a.sort-b.sort;
+        });
+        
+
+        table.reload('demo',{  
+              data : oldData  
+        }); 
+
+  		 $('#msg').val(JSON.stringify(oldData));
+  	},pushcode:function(){
+  	    var _this=$(this);
+  		$.ajax({
+  			type:"post",
+  			url:"{:URL('goods/getcode')}",
+  			success:function(res){
+  				_this.prev().val(res);
+  				_this.prev().attr("readonly","readonly");
+  			},
+  			error:function(r){
+  				layer.msg('网络错误');
+  			}
+  			
+  		});
+  	},allpost:function(){
+  		if(checkpost()===0){
+  			layer.msg('*为必填项');
+  			return false;
+  		}
+  		
+		var oldData = table.cache["demo"];  
+		var datas=$("form").serializeArray();     
+        var j = {},k={};
+        $.each(datas,function(index,item){					       		
+       		j[item.name] = item.value;					       				           
+        }); 
+  		$.ajax({
+  			type:"post",
+  			url:"{:url('goods/addgoods')}",
+  			data:{old:j,news:oldData},
+  			success:function(res){
+  				layer.msg(res.msg,{icon:res.status});
+				if(res.status==1){
+					var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+					parent.layer.close(index); 	
+					  parent.location.reload();
+					
+					
+				}
+
+  			}
+  		});
+
+  	}
+  		
+  };
+ $('.layui-form .layui-btn').on('click', function(){
+    var othis = $(this), method = othis.data('method');
+    active[method] ? active[method].call(this, othis) : '';
+  }); 
+//监听单元格事件
+ table.render({
+  elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
+  ,cols: [[   
+     {field: 'commodity_code', title: '条码', width: 180,event: 'setcode', style:'cursor: pointer;'}
+    ,{field: 'commodity_name', title: '名称'}
+    ,{field: 'guige', title: '属性', width: 120, event: 'setguige', style:'cursor: pointer;'}
+    ,{field: 'in_price', title: '成本价', width: 80}
+    ,{field: 'sell_price', title: '售价', width: 60,event: 'setsale', style:'cursor: pointer;'}
+    ,{field: 'unit_name', title: '单位', width: 60,event: 'setunit', style:'cursor: pointer;'}
+    ,{field: 'unit_name_value', title: '比例', width: 120, event: 'setbl', style:'cursor: pointer;'}
+    ,{field: 'set', title: '操作', toolbar: '#settool',width: 170}
+    ,{field: 'hide', title: '隐藏',width: 0.1,style:'display:none'}
+    ,{field: 'z_commodity_code', title: '隐藏',width: 0.1,style:'display:none'}
+    ,{field: 'SPType', title: '隐藏',width: 0.1,style:'display:none'}
+    ,{field: 'id', title: '隐藏',width: 0.1,style:'display:none'}
+    
+  ]]
+ ,data:datas
+ ,limit: 30
+ });
+ 
+ 
+table.on('tool(test)', function(obj){
+		
+	
+	
+    var data = obj.data;
+     var tr = obj.tr;
+     var type=data.SPType;
+	if(obj.event === 'del'){ //删除
+		if(type==0){
+			tip="这是主商品，如果删除将删除主商品下所有属性和副单位商品,您确定要删除吗？";
+		}else if(type==1){
+			tip="这是属性商品，如果删除将删除属性商品下所有副单位商品,您确定要删除吗？";
+		}else{
+			tip="这是副单位商品,您确定要删除吗？";
+		}
+		//alert(tip);
+	    layer.confirm(tip, function(index){
+	      obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+		layer.close(index);
+	     $.ajax({
+	     	type:'post',
+	     	url:"{:URL('goods/alldel')}",
+	     	data:{id:data.commodity_code,type:type},
+	     	success:function(res){
+					layer.msg(res.msg,{icon:res.status});
+					if(type==0){
+						top.location.href="{:URL('goods/index')}";
+					}
+	     		
+	     	},
+	     	error:function(index){
+	     		layer.msg('网络错误！');
+	     	}
+	     });
+	     
+	     
+	   	});
+	} else if(obj.event === 'add'){ //编辑
+  		if(checkpost()===0){
+  			layer.msg('*为必填项');
+  			return false;
+  		}
+  		var mid=$('#code').val();
+  		if(mid.length>6){
+  		  var ret = /^\d{13,}$/,value=data.commodity_code;
+	      if(!ret.test(value)){
+	      	layer.msg('条码必须为13位数字！');	      	 
+	      	return false;
+	      }
+	     }
+			
+		var oldData = table.cache["demo"];  
+		var datas=$("form").serializeArray();     
+        var j = {};
+        $.each(datas,function(index,item){					       		
+       		j[item.name] = item.value;					       				           
+        }); 
+
+
+        oldData.push(pushdata("add-unit",2,j,oldData,4,0,data.commodity_code,data.guige,data.id));  
+        oldData.sort(function(a,b){
+            return a.id-b.id;
+        });        
+        oldData.sort(function(a,b){
+            return a.sort-b.sort;
+        });                
+        table.reload('demo',{  
+              data : oldData  
+        });
+ //$('#msg').val(JSON.stringify(oldData));
+       
+	}
+	if(data.hide === 'add-main'){return false;}
+	if(data.hide === 'add-unit' && obj.event === 'setguige'){return false;}
+	
+	if(obj.event === 'setcode'){
+		var codes=$('#code').val();
+		if(codes.length<6){
+			return false;
+		}
+      layer.prompt({
+        formType: 0
+        ,title: '条码'
+        ,value: data.commodity_code
+      }, function(value, index){
+      	//alert(value);
+	      var ret = /^\d{13,}$/;
+	      if(!ret.test(value)){
+	      	 alert('条码必须为13位数字！');       
+	      }else{
+	      	$.ajax({
+	      		type:"post",
+	      		url:"{:url('goods/getspcode')}",
+	      		data:{code:value},
+	      		success:function(res){
+	      			if(res.status==2){
+	      				layer.msg(res.msg,{icon:res.status});
+	      			}else{
+				      layer.close(index);
+				      obj.update({
+				        commodity_code: value
+				      });		      	
+	      				
+	      			}
+	      		}
+	      	});
+	      	
+	      }      	
+      });
+    }		
+	if(obj.event === 'setguige'){
+      layer.prompt({
+        formType: 0
+        ,title: '修改 条码  为 ['+ data.commodity_code +'] 的属性'
+        ,value: data.guige
+      }, function(value, index){
+        layer.close(index);
+        
+        //这里一般是发送修改的Ajax请求
+        
+        //同步更新表格和缓存对应的值
+        obj.update({
+          guige: value
+        });
+      });
+    }	
+
+	if(obj.event === 'setsale'){
+      layer.prompt({
+        formType: 0
+        ,title: '修改 条码  为 ['+ data.commodity_code +'] 的售价'
+        ,value: data.sell_price
+      }, function(value, index){
+      	var reg = new RegExp("^[0-9]*$");
+		if(!reg.test(value)){	        
+	        layer.msg('请输入数字');
+   		}else{      	     	
+	        layer.close(index);
+	        obj.update({
+	          sell_price: value
+	        });
+       }
+      });
+    }
+	
+	if(obj.event === 'setunit'  && data.hide === 'add-unit'){
+      layer.prompt({
+        formType: 0
+        ,title: '修改 条码  为 ['+ data.commodity_code +'] 的单位'
+        ,value: data.unit_name
+      }, function(value, index){
+      	var uval=data.unit_name_value;
+      	   var oldval= uval.split("=");
+      	   console.log(oldval);
+	        layer.close(index);
+	        obj.update({
+	          unit_name: value,
+	          unit_name_value:"1"+ value+"="+oldval[1],
+	        });
+      		
+      
+      });
+    }
+	
+	if(obj.event === 'setbl' && data.hide === 'add-unit'){
+	var unit=document.getElementById('unit').value;
+      layer.prompt({
+        formType: 0
+        ,title: '修改 条码  为 ['+ data.commodity_code +'] 的比例'
+        ,value: ''
+      }, function(value, index){
+        layer.close(index);
+        obj.update({
+          unit_name_value:"1"+ data.unit_name+"="+value+unit
+        });
+      });
+    }	
+	
+ });
+ 
+ 
+//商品名改变
+$('#txtChinese').blur(function(){
+	var _this=$(this);
+	var len=$('tbody tr').length;
+	if(len>0){
+		var newval=_this.val();		
+		var oldData = table.cache["demo"];		
+		var maps= new Map();
+		oldData = oldData.map(element =>{
+		
+		   	element.commodity_name = newval;
+		   
+		    return element;
+		});		
+		
+		table.reload('demo',{  
+              data : oldData  
+        });
+	
+	}
+	
+});
+//商品售价
+$('#salej').blur(function(){
+	var _this=$(this);
+	var len=$('tbody tr').length;
+	if(len>0){
+		var newval=_this.val();		
+		var oldData = table.cache["demo"];		
+		var maps= new Map();
+		oldData = oldData.map(element =>{
+			if(element.commodity_code==document.getElementById('code').value){
+		   	element.sell_price = newval;
+		   }
+		   
+		    return element;
+		});		
+		
+		table.reload('demo',{  
+              data : oldData  
+        });
+	
+	}
+	
+});
+
+//改价
+$('#cbjg').blur(function(){
+	var _this=$(this);
+	var len=$('tbody tr').length;
+	if(len>0){
+		var newval=_this.val();		
+		var oldData = table.cache["demo"];		
+		var maps= new Map();
+		oldData = oldData.map(element =>{
+		
+		   	element.in_price = newval;
+		   
+		    return element;
+		});		
+		
+		table.reload('demo',{  
+              data : oldData  
+        });
+	
+	}
+	
+});
+//改属性
+$('#guigeattr').blur(function(){
+	var _this=$(this);
+	var len=$('tbody tr').length;
+	if(len>0){
+		var oldunit=$('.guigeattr').val();		
+		var oldData = table.cache["demo"];		
+		var maps= new Map([[oldunit,_this.val()]]);
+		oldData = oldData.map(element =>{
+		var str=element.unit_name_value,regExp = new RegExp(oldunit, 'g'); 	
+			if(element.guige==oldunit){
+		    element.guige = maps.get(element.guige);
+		   }else{
+		   	element.guige = element.guige;
+		   }
+
+		    return element;
+		});		
+		
+		table.reload('demo',{  
+              data : oldData  
+        });
+		$('.guigeattr').val(_this.val());
+	}else{
+		$('.guigeattr').val(_this.val());
+	}
+	
+});
+
+
+//单位改变
+$('#unit').blur(function(){
+	var _this=$(this);
+	var len=$('tbody tr').length;
+	if(len>0){
+		var oldunit=$('.tags').val();		
+		var oldData = table.cache["demo"];		
+		var maps= new Map([[oldunit,_this.val()]]);
+		oldData = oldData.map(element =>{
+		var str=element.unit_name_value,regExp = new RegExp(oldunit, 'g'); 	
+			if(element.unit_name==oldunit){
+		    element.unit_name = maps.get(element.unit_name);
+		   }else{
+		   	element.unit_name = element.unit_name;
+		   }
+		    element.unit_name_value = str.replace(regExp, _this.val());
+		    return element;
+		});		
+		
+		table.reload('demo',{  
+              data : oldData  
+        });
+	$('.tags').val(_this.val());
+	}else{
+		$('.tags').val(_this.val());
+	}
+	
+});
+$('#code').blur(function(){
+	var _this=$(this),act="{$info.commodity_code|default=''}";
+		if(!act){
+	  		$.ajax({
+	  			type:"post",
+	  			url:"{:url('goods/getgoods')}",
+	  			data:{code:_this.val()},
+	  			success:function(res){
+	  				var data=res.data;
+	  				
+	  				if(res.status==1){
+	  					if(data){
+	  						//alert(data.name);
+	  						$('#txtChinese').val(data.name);
+	  						$('#cbjg').val(data.shichangjg);
+	  						$('#baozhiq').val(data.baozhiq);
+	  						$('#guigeattr').val(data.shangpingg);
+	  						$('#py').val(data.pinyinm);
+	  						$('#unit').val(data.danwei);
+	  						$('#sppp').val(data.shangpinppid);
+	  						$('#changjia').val(data.changjia);
+	  						$('#cateid').find("option[value='"+data.shangpinflid+"']").attr('selected',true);
+	  						form.render('select');
+	  						
+	  					}
+	  				}else{
+	  					_this.focus();
+	  					layer.tips(res.msg,'#code',{tips: [1, '#FF5722']});
+	  				}
+	
+	  			},
+	  			error:function(){
+	  				layer.msg('网络出错',{icon:2});
+	  			}
+	  		});			
+		}
+
+  		
+});
+
+
+
+});
+function query(){
+    var str = document.getElementById("txtChinese").value.trim();
+    if(str == "") return;
+    var arrRslt = makePy(str);
+    document.getElementById("py").value=arrRslt;//清空下拉框    
+}
+
+
+
+</script>
+
+<include file="Public:footer" />

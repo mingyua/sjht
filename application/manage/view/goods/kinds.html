@@ -1,0 +1,139 @@
+    <link rel="stylesheet" href="__ZTREE__/bootstrapStyle.css" type="text/css">
+
+    <script type="text/javascript" src="__ZTREE__/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="__ZTREE__/jquery.ztree.excheck.js"></script>
+    <script type="text/javascript" src="__ZTREE__/jquery.ztree.exedit.js"></script>
+        <script type="text/javascript" src="__MANAGE__/js/jquery.cookie.js"></script>
+    <SCRIPT type="text/javascript">
+ var setting = {
+			view: {
+				addHoverDom: addHoverDom,
+				removeHoverDom: removeHoverDom,
+				selectedMulti: false
+			},
+			edit: {
+				enable: true,
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			},
+			callback: {
+				beforeDrag: beforeDrag,
+				beforeEditName: beforeEditName,
+				beforeRemove: beforeRemove,
+				beforeRename: beforeRename,
+				onRemove: onRemove,				
+				onRename: onRename
+
+			}
+		};
+
+		var zNodes ={$kinds};
+		var className = "dark";
+		function beforeDrag(treeId, treeNodes) {
+			return false;
+		}
+		function beforeEditName(treeId, treeNode) {
+			className = (className === "dark" ? "":"dark");			
+			var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+			zTree.selectNode(treeNode);
+			zTree.editName(treeNode);
+			return false;
+		}
+		function beforeRemove(treeId, treeNode) { 
+			return confirm("确认删除 节点 -- " + treeNode.name + " 吗？");
+		}
+
+		function beforeRename(treeId, treeNode, newName, isCancel) {
+			className = (className === "dark" ? "":"dark");
+			if (newName.length == 0) {
+				setTimeout(function() {
+					var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+					zTree.cancelEditName();
+					layer.msg("节点名称不能为空",{icon:2});
+				}, 0);
+				return false;
+			}
+			return true;
+		}
+		
+
+		var newCount = 1;
+		function addHoverDom(treeId, treeNode) {
+			var maxid="{:getmaxid()}";
+			var sObj = $("#" + treeNode.tId + "_span");
+			if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length>0) return;
+			var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
+				+ "' title='add node' onfocus='this.blur();'></span>";
+			sObj.after(addStr);
+			var btn = $("#addBtn_"+treeNode.tId);
+			if (btn) btn.bind("click", function(){
+				var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+				zTree.addNodes(treeNode, {id:(parseInt(maxid) + newCount), pId:treeNode.id, name:"new node" + (newCount++)});
+				ajaxpost('',"new node"+(newCount++),treeNode.id,"{:URL('Goods/addkinds')}");
+				
+				return false;
+			});
+		};
+		function removeHoverDom(treeId, treeNode) {
+			$("#addBtn_"+treeNode.tId).unbind().remove();
+		};
+		
+		function onRename(e, treeId, treeNode, isCancel) {
+			if(!isCancel){
+				ajaxpost(treeNode.id,treeNode.name,'0',"{:URL('Goods/editkinds')}");
+			}
+		}
+		function onRemove(e, treeId, treeNode) {
+			
+			ajaxpost(treeNode.id,'0','0',"{:URL('Goods/delkinds')}");
+
+		}
+		function ajaxpost(id,name,pid,url){			
+			if(name){
+				$.ajax({
+					type:"post",
+					url:url,//"{:URL('Goods/editkinds')}",
+					data:{id:id,name:name,pid:pid},
+					success:function(res){
+						layer.msg(res.msg,{icon:res.status});
+						if(res.status>1){$('#del').val('1');} //如果删除不成功，也要显示菜单
+					},error:function(index){
+						layer.msg('网络错误',{icon:2});
+						return false;
+					}
+				});	
+			}
+		}
+		
+		$(document).ready(function(){
+			$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+
+		});
+       
+    </SCRIPT>
+<div class="layui-fluid">
+	<div class="layui-row">
+		
+
+		<div class="layui-col-sm12">
+			<fieldset class="layui-elem-field mr-20">
+			  <legend class="bold">商品类别</legend>
+			  <div id="kindsbox" class="layui-field-box"  style="overflow-y: auto;">
+				   <ul id="treeDemo" class="ztree" ></ul>		
+			  </div>
+			</fieldset>			
+		</div>	
+
+			<div id="res">
+				<input type="text" name="del" id="del" value="0" />
+			</div>
+	</div>
+</div>
+
+<script>
+	winH = $(window).height();
+	$('#kindsbox').height(winH - 60);
+</script>

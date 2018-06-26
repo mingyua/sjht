@@ -1,0 +1,68 @@
+<div class="layui-fluid">
+	<div class="layui-row">
+			<div class="layui-col-sm12">
+			
+			<form id="headform" class="layui-form layui-form-pane" method="get" method="{:URL('sale/change')}">
+			<div class="layui-form-item">
+				<div class="layui-input-inline" style="width: 320px;"><input id="randtime" type="text" name="keyword"  class="layui-input" placeholder="请选择日期" value="{$times}" /></div>
+				<div class="layui-input-inline"><button id="submit" type="submit" name="submit" class="layui-btn" ><i class="fa fa-search"></i>搜索</button></div>				
+			</div>				
+			</form>
+				
+			</div>
+	
+			<div id="res">
+			
+			</div>
+			
+			<table class="layui-table layui-form">
+				<thead class="text-center ">
+					<th>序号</th>					
+					<th>开始时间</th>					
+					<th>结束时间</th>
+					<th>收银员</th>
+					<th>收银总额</th>
+					<th>现金支付</th>
+					<th>银联支付</th>
+					<th>微信支付</th>
+					<th>支付宝支付</th>
+					<th>备用金</th>
+				</thead>
+				<tbody>
+					{volist name="changelist" id="v"}
+						
+						<tr>
+							<td>{$key + 1}</td>
+							<td>{$v.begin_datetime}</td>
+							<td>{$v.end_datetime}</td>
+							<td>{$v.Cashier_code}</td>
+							<td>{$v.total_cash|toprice}</td>
+							{notempty name="v.arr"}
+							<td>{$v.arr.0.payment_money|toprice}</td>
+							<td>{$v.arr.1.payment_money|toprice}</td>
+							<td>{$v.arr.3.payment_money|toprice}</td>
+							<td>{$v.arr.2.payment_money|toprice}</td>
+							{else/}
+							<td>0.00</td>
+							<td>0.00</td>
+							<td>0.00</td>
+							<td>0.00</td>
+							
+							{/notempty}
+							<td>{$v.Reserve_gold|toprice}</td>
+	
+						</tr>
+						
+					{/volist}
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="11" class="text-right">{$changelist->render()}</td>
+					</tr>
+				</tfoot>
+			</table>
+			
+			
+		</div>	
+	</div>
+</div>

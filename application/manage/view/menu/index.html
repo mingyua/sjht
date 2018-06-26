@@ -1,0 +1,35 @@
+<div class="layui-fluid">
+	<div class="row" style="margin-top: 5px;">
+		<div class="layui-col-sm12 pb-0">	
+		<div id="headform"><span class="title">菜单列表</span><button class="layui-btn f-r add" title="添加菜单" dataurl="{:URL('menu/addmenu')}">添加菜单</button></div>
+		</div>
+		<table class="table table-bordered">
+			<thead>
+				<th>ID</th>
+				<th>菜单名称</th>
+				<th>链接地址</th>
+				<th>排序</th>
+				<th>是否显示</th>
+				<th width="200">操作</th>
+			</thead>
+			<tbody>
+				{volist name="menulist" id="v"}
+				<tr>
+					<td>{$v.ID}</td>
+					<td>{$v.html}{$v.Menu_name}</td>
+					<td>{$v.Menu_url}</td>
+					<td id="order" dataid="order" dataurl="{:URL('menu/order')}">{$v.Menu_order}</td>
+					<td>{eq name="v.Status" value="1"}显示{else/}关闭{/eq}</td>
+					<td id="usebtn" class="text-center">
+
+						<button class="layui-btn layui-btn-sm add" title="修改菜单" dataurl="{:URL('menu/addmenu',array('id'=>$v['ID']))}">修改</button>
+						<button class="layui-btn layui-btn-sm layui-btn-danger del" arrid="{$v.ID}" dataurl="{:URL('menu/delmenu')}">删除</button>
+					</td>
+				</tr>
+					
+				{/volist}
+			</tbody>
+			
+		</table>
+	</div>
+</div>

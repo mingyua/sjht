@@ -1,0 +1,28 @@
+<div class="layui-fluid">
+	<div class="row" style="margin-top: 20px;">
+		<div id="headform"><span class="title">角色员表</span><button class="layui-btn mr-15 f-r addpro" title="添加角色" dataurl="{:URL('manage/role')}">添加角色</button></div>
+		<table class="table table-bordered">
+			<thead>
+				<th width="40px">ID</th>
+				<th>角色名称</th>
+	
+				<th width="300">操作</th>
+			</thead>
+			<tbody>
+				{volist name="rolelist" id="v"}
+				<tr>
+					<td>{$v.ID}</td>
+					<td>{$v.Role_name}</td>
+					<td id="usebtn" class="text-center">
+						<button class="btn btn-sm btn-primary add" title="权限设置" dataurl="{:URL('manage/access',array('id'=>$v['ID']))}">权限设置</button>
+						<button class="btn btn-sm btn-default addpro" dataname="{$v.Role_name}" title="修改角色" dataid="{$v.ID}" dataurl="{:URL('manage/role')}">修改</button>
+						<button class="btn btn-sm btn-danger del" arrid="{$v.ID}" dataurl="{:URL('manage/delrole')}">删除</button>
+					</td>
+				</tr>
+					
+				{/volist}
+			</tbody>
+			
+		</table>
+	</div>
+</div>

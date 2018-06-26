@@ -1,0 +1,94 @@
+<style>
+	.layui-table-body {overflow-x: hidden;}
+</style>
+<div class="layui-fluid">
+	<div class="layui-row">
+			<div class="layui-col-sm12">
+			
+			<form id="headform" class="layui-form layui-form-pane">
+			<div class="layui-form-item">
+
+				<div class="layui-input-inline">
+					<select name="commodity_type_id">
+						<option value="">全部分类</option>
+						{volist name="cate" id="v"}
+						<option value="{$v.id}">{$v.cpmmodity_type_name}</option>
+						{/volist}
+					</select>
+				</div>
+				<div class="layui-input-inline">
+					<select name="shangpinppID">
+						<option value="">全部品牌</option>
+						{volist name="pp" id="v"}
+						<option value="{$v.name}">{$v.name}</option>
+						{/volist}
+						
+					</select>
+				</div>
+				<div class="layui-input-inline">
+					<select name="status">
+						<option value="1">有销量</option>
+						<option value="2">无销量</option>						
+					</select>
+				</div>
+				<div class="layui-input-inline" style="width: 340px;"><input type="text" id="randtime" name="time" class="layui-input"  value="" /></div>
+				<div class="layui-input-inline"><input type="text" name="keyword" class="layui-input" placeholder="请输入品名或条码" value="" /></div>
+				<div class="layui-input-inline"><a  lay-submit="" lay-filter="search" class="layui-btn" ><i class="fa fa-search"></i>搜索</a></div>
+			</div>				
+			</form>
+				
+			</div>
+	
+			<div id="res">
+			
+			</div>
+			<table class="layui-hide" id="test"></table>									
+		</div>	
+	</div>
+</div>
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">趋势分析</a>
+  <a class="layui-btn layui-btn-xs" lay-event="edit">会员记录</a>
+
+</script>
+<script>
+layui.use(['table','form'], function(){
+  var table = layui.table,form = layui.form;
+  var tableIns=table.render({
+    elem: '#test'
+    ,url:"{:URL('sale/countdata')}"
+    ,cols: [[
+      {field:'id', width:60, title: '序号'}
+//    ,{width:180, title: '操作',toolbar: '#barDemo'}
+      ,{field:'commodity_name', title: '商品名称'}
+      ,{field:'commodity_code', width:200, title: '商品条码', sort: true}
+      ,{field:'cate', width:120, title: '商品分类', sort: true}
+      ,{field:'Store_amount',  width:100,title: '现有库存', minWidth: 150,style:'text-align:right'}
+      ,{field:'amount', width:120, title: '销售数量', sort: true,style:'text-align:right'}
+      ,{field:'price', width:120, title: '商品总价', sort: true,style:'text-align:right'}
+      ,{field:'totalprice', width:120, title: '实收金额', sort: true,style:'text-align:right'}
+//    ,{field:'wealth', width:120, title: '实收占比'}
+      ,{field:'lirui', width:135, title: '利润', sort: true, style:'text-align:right'}
+      ,{field:'liruil', width:135, title: '利润率', sort: true,style:'text-align:right'}
+    ]]
+    ,page: true
+  });
+  
+    //监听提交
+	form.on('submit(search)', function(data){
+		
+		tableIns.reload({
+		  where: { 
+		    data: data.field
+		  }
+		  ,page: {
+		    curr: 1 //重新从第 1 页开始
+		  }
+		}); 		
+	    return false;
+	});
+ 
+  
+  
+});
+</script>

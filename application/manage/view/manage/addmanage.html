@@ -1,0 +1,51 @@
+<include file="Public:header" />
+<div class="container">
+	<div class="row" style="margin-top: 20px;padding: 20px;">
+		<form class="layui-form layui-form-pane">
+			<div class="layui-form-item"> <label class="layui-form-label">所属角色</label>
+				<div class="layui-input-block"> 
+				<select name="RoleID">
+					{volist name="role" id="v"}
+						<option value="{$v.ID}" {if condition="$info.id eq $v['ID']"}selected{/if} >{$v.Role_name}</option>
+					{/volist}
+					
+				</select>
+				</div>
+			</div>
+			<div class="layui-form-item"> <label class="layui-form-label">用户名</label>
+				<div class="layui-input-block"> <input name="user_code" autocomplete="off" placeholder="请输入用户名" lay-verify="required" class="layui-input" type="text" value="{$info.user_code|default=''}"> </div>
+			</div>
+			<div class="layui-form-item"> <label class="layui-form-label">密码</label>
+				<div class="layui-input-block"> <input name="user_pass" id="pass" autocomplete="off" {notempty name="info.id"}{else/}lay-verify="pass"{/notempty} placeholder="请输入密码"  class="layui-input" type="text" value=""> </div>
+			</div>
+			<div class="layui-form-item"> <label class="layui-form-label">确认密码</label>
+				<div class="layui-input-block"> <input name="repassword" autocomplete="off" {notempty name="info.id"}{else/}lay-verify="repass"{/notempty} placeholder="请输入确认密码"  class="layui-input" type="text" value=""> </div>
+			</div>
+			
+			<div class="layui-form-item"> <label class="layui-form-label">姓名</label>
+				<div class="layui-input-block"> <input name="user_name" autocomplete="off" placeholder="请输入用户名" class="layui-input" type="text" value="{$info.user_name|default=''}"> </div>
+			</div>
+			<div class="layui-form-item"> <label class="layui-form-label">联系电话</label>
+				<div class="layui-input-block"> <input name="user_mobile" autocomplete="off" {notempty name="info.id"}disabled{/notempty} placeholder="请输入用户名" lay-verify="required" class="layui-input" type="text" value="{$info.user_mobile|default=''}"> </div>
+			</div>
+			<div class="layui-inline"> <label class="layui-form-label">是否可用</label>
+				  <input name="user_flag" value="1" title="是" {if condition="($info.user_flag eq '1') OR ($info.user_flag eq '')"}checked="checked"{/if} type="radio">
+			      <input name="user_flag" value="0" title="否" type="radio" {if condition="$info.user_flag eq '0'"}checked="checked"{/if}>			
+			</div>
+
+
+			<div class="layui-form-item">
+				<input type="hidden" name="operation_user_code" id="operation_user_code" value="{:session('uname')}" />
+				<input type="hidden" name="operation_date" id="operation_date" value="<?php echo date('Y-m-d H:i:s',time());?>" />
+				<div class="layui-input-block"><a class="layui-btn" lay-submit lay-filter="send" dataurl="{:URL('manage/addmanage')}">立即提交</a>  </div>
+			</div>
+			
+				{notempty name="info.id"}
+					<input type="hidden" name="id" value="{$info.id|default=''}" />			
+				{/notempty}
+			
+		</form>
+
+	</div>
+</div>
+<include file="Public:footer" />

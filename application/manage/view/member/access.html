@@ -1,0 +1,41 @@
+<include file="Public:header" />
+<div class="container">
+	<div class="row" style="margin-top: 20px;padding: 20px;">
+		<blockquote class="layui-elem-quote w text-center fa-2x "><b>{$info.Cashier_name}权限设置</b></blockquote>
+		<form class="layui-form" >
+		<div class="layui-collapse" >
+			{volist name="menulist" id="v"}
+				<div class="layui-colla-item">
+					<h2 class="layui-colla-title">{$v.Menu_name}</h2>
+					<div class="layui-colla-content layui-show">
+						<div class="maincate">
+							<input name="allck[]" lay-skin="primary" lay-filter="allck" title="全选"  value="{$v.ID}" {$v.checked}  type="checkbox">  
+						</div>
+						 <div class="childcate">
+						 {volist name="v.child" id="k"}
+				        	<input name="allck[]" lay-skin="primary" lay-filter="childck" title="{$k.Menu_name}" value="{$k.ID}" {$k.checked} type="checkbox">	
+				        	{volist name="k.child" id="j"}
+					        	<input name="allck[]" lay-skin="primary" lay-filter="childck" title="{$j.Menu_name}" value="{$j.ID}" {$j.checked} type="checkbox">	
+				        		
+				        	{/volist}   
+						 {/volist}   
+						 	
+						 </div>
+					</div>
+				</div>
+				<div class="layui-clear">
+					
+				</div>
+			{/volist}
+		</div>
+		  <div class="layui-form-item text-center" style="margin-top: 20px;">
+		    <div class="layui-input-block">
+		    	<input type="hidden" name="id" id="id" value="{$info.Cashier_code}" />
+		      <button class="layui-btn" lay-submit lay-filter="send" dataurl="{:URL('member/access')}">立即提交</button>
+		      
+		    </div>
+		  </div>		
+		</form>
+	</div>
+</div>
+<include file="Public:footer" />

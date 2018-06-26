@@ -1,0 +1,32 @@
+<include file="Public:header" />
+<div class="layui-row">
+	<div class="layui-col-sm12 pd-20">
+<table class="layui-table">
+	
+	<tr>
+		<th>序号</th>
+		<th>商品名称</th>
+		<th>商品条码</th>
+		<th>原库存</th>
+		<th>盘点库存</th>
+		<th>差异库存</th>
+		<th>盈亏金额</th>
+	</tr>
+	{volist name="pdmx" id="v"}
+	<tr>
+		<td>{$key + 1}</td>
+		<td>{$v.commodity_name}</td>
+		<td>{$v.commodity_code}</td>
+		<td>{$v.now_amount}</td>
+		<td>{$v.actual_amount}</td>
+		<td>{$v.actual_amount - $v.now_amount}</td>
+		<td>{$v.in_price * ($v.actual_amount - $v.now_amount)}</td>
+	</tr>
+	{/volist}
+</table>		
+	</div>
+
+	
+</div>
+
+<include file="Public:footer" />

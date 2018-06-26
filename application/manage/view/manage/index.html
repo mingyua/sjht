@@ -1,0 +1,41 @@
+<div class="layui-fluid">
+	
+	<div class="row" style="margin-top: 5px;">
+		<div class="layui-col-sm12">
+		<div id="headform"><span class="title">管理员表</span><button class="layui-btn f-r add" title="添加管理员" dataurl="{:URL('manage/addmanage')}">添加管理员</button></div>
+			
+		</div>
+
+		<table class="table table-bordered">
+			<thead>
+				<th>ID</th>
+				<th>管理员名称</th>
+				<th>角色</th>
+				<th>手机号码</th>
+				<th>时间</th>
+				<th width="200">操作</th>
+			</thead>
+			<tbody>
+				{volist name="adminlist" id="v"}
+				<tr>
+					<td>{$v.id}</td>
+					<td>{$v.user_code}({$v.user_name})</td>
+					<td >{$v.RoleID|getrolename}</td>
+					<td>{$v.user_mobile}</td>
+
+					<td>{$v.operation_date}</td>
+					<td id="usebtn" class="text-center">
+
+						<button class="btn btn-sm btn-default add" title="修改菜单" dataurl="{:URL('manage/addmanage',array('id'=>$v['id']))}">修改</button>
+						<button class="btn btn-sm btn-danger del" arrid="{$v.id}" dataurl="{:URL('manage/delmanage')}">删除</button>
+					</td>
+				</tr>
+					
+				{/volist}
+			</tbody>
+			
+		</table>
+		<div class="text-right">
+			{$adminlist->render()}
+		</div>
+	</div>

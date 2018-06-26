@@ -1,0 +1,99 @@
+<div class="layui-fluid">
+	<div class="layui-row">
+			<div class="layui-col-sm12">
+			
+			<form id="headform" class="layui-form layui-form-pane" method="get" method="{:URL('goods/index')}">
+			<div class="layui-form-item">
+
+				<div class="layui-input-inline" style="width: 320px;"><input id="randtime" type="text" name="keyword"  class="layui-input" placeholder="请选择日期" value="{$times}" /></div>
+				<div class="layui-input-inline"><button id="submit" type="submit" name="submit" class="layui-btn" ><i class="fa fa-search"></i>搜索</button></div>
+				
+
+			</div>				
+			</form>
+				
+			</div>
+	
+			<div id="res">
+			
+			</div>
+			<div class="layui-col-sm9">
+				<div class="layui-col-sm4">
+					<div class="commbox">
+						<i class="fa fa-line-chart color1"></i>
+						<span>
+							<h2>￥{$info.lirui}</h2>
+							<p>利润</p>
+						</span>
+						<div class="layui-clear"></div>
+					</div>
+				</div>
+				<div class="layui-col-sm4">
+					<div class="commbox">
+						<i class="fa fa-pie-chart color2"></i>
+						<span>
+							<h2>{$info.maoli}</h2>
+							<p>毛利率</p>
+						</span>
+						<div class="layui-clear"></div>
+					</div>
+				</div>
+				<div class="layui-col-sm4">
+					<div class="commbox">
+						<i class="fa fa-file-text color3"></i>
+						<span>
+							<h2>{$info.counts}</h2>
+							<p>单数</p>
+						</span>
+						<div class="layui-clear"></div>
+					</div>
+				</div>
+				<div class="layui-col-sm4">
+					<div class="commbox">
+						<i class="fa fa-credit-card color4"></i>
+						<span>
+							<h2>￥{$info.cash}</h2>
+							<p>现金支付</p>
+						</span>
+						<div class="layui-clear"></div>
+					</div>
+				</div>
+				<div class="layui-col-sm4">
+					<div class="commbox">
+						<i class="fa fa-weixin color5"></i>
+						<span>
+							<h2>￥{$info.wechat}</h2>
+							<p>微信支付</p>
+						</span>
+						<div class="layui-clear"></div>
+					</div>
+				</div>
+				<div class="layui-col-sm4">
+					<div class="commbox">
+						<i class="fa fa-paypal color6"></i>
+						<span>
+							<h2>￥{$info.alipay}</h2>
+							<p>支付宝支付</p>
+						</span>
+						<div class="layui-clear"></div>
+					</div>
+				</div>
+				
+			</div>
+				<div class="layui-col-sm3">
+					<div class="commbox" style="height: 260px;">
+						<i class="fa fa-bar-chart color8" style="height: 200px;line-height: 200px;text-align: center;"></i>
+						<span class="mt-50">
+							<h2>￥{$info.total_money}</h2>
+							<p>销售额</p>
+						</span>
+						<div class="layui-clear"></div>
+					</div>
+				</div>
+			
+			
+			
+			
+		</div>	
+	</div>
+</div>

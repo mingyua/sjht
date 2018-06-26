@@ -1,0 +1,72 @@
+<include file="Public:header" />
+<div class="container">
+	<div class="row" style="margin-top: 20px;padding: 20px;">
+		<form class="layui-form layui-form-pane">
+			<div class="layui-form-item"> <label class="layui-form-label">所属店铺</label>
+				<div class="layui-input-block"> 
+				<select name="storeid" lay-filter="store" lay-verify="required">
+					<option value="">请选择</option>
+					{volist name="role" id="v"}
+						<option value="{$v.store_code|default=''}" {if condition="$info.Store_code eq $v.store_code"}selected{/if} >{$v.store_name|default=''}</option>
+					{/volist}
+					
+				</select>
+				</div>
+			</div>
+
+			<div class="layui-form-item"> <label class="layui-form-label">密码</label>
+				<div class="layui-input-block"> <input name="password" id="pass" autocomplete="off" {notempty name="info.Store_code"}{else/}lay-verify="pass"{/notempty} placeholder="请输入密码"  class="layui-input" type="text" value=""> </div>
+			</div>
+			<div class="layui-form-item"> <label class="layui-form-label">确认密码</label>
+				<div class="layui-input-block"> <input name="repassword" autocomplete="off" lay-verify="repass" placeholder="请输入确认密码"  class="layui-input" type="text" value=""> </div>
+			</div>
+			
+			<div class="layui-form-item"> <label class="layui-form-label">姓名</label>
+				<div class="layui-input-block"> <input name="Cashier_name" autocomplete="off" placeholder="请输入用户名" class="layui-input" type="text" value="{$info.Cashier_name|default=''}"> </div>
+			</div>
+			<div class="layui-form-item"> <label class="layui-form-label">联系电话</label>
+				<div class="layui-input-block"> <input name="TEL" autocomplete="off" {notempty name="info.id"}disabled{/notempty} placeholder="请输入联系电话" lay-verify="tel" class="layui-input" type="text" value="{$info.TEL|default=''}"> </div>
+			</div>
+			<div class="layui-inline"> <label class="layui-form-label">是否禁用</label>
+				  <input name="statue" value="1" title="禁用" {if condition="($info.statue eq '1') OR ($info.statue eq '')"}checked="checked"{/if} type="radio">
+			      <input name="statue" value="0" title="不禁用" type="radio" {if condition="$info.statue eq '0'"}checked="checked"{/if}>			
+			</div>
+			<div class="layui-form-item"> <label class="layui-form-label">备注</label>
+				<div class="layui-input-block">
+					<textarea name="remark" class="layui-textarea"></textarea>
+				</div>
+			</div>
+
+
+			<div class="layui-form-item">
+				<input id="storeid" name="Store_code" autocomplete="off"  type="hidden" value="{$info.Store_code|default=''}">
+				<input type="hidden" name="operation_date" id="operation_date" value="<?php echo date('Y-m-d H:i:s',time());?>" />
+				<div class="layui-input-block"><a class="layui-btn" lay-submit lay-filter="send" dataurl="{:URL('member/addmember')}">立即提交</a>  </div>
+			</div>
+			
+				{notempty name="info.Cashier_code"}
+					<input type="hidden" name="id" value="{$info.Cashier_code|default=''}" />			
+				{/notempty}
+			
+		</form>
+
+	</div>
+</div>
+<script>
+	layui.use(['form', 'layer','element'], function() {
+	var $ = layui.jquery,		
+		form = layui.form,
+		layer = layui.layer,	
+		element = layui.element;
+		
+
+	form.on('select(store)', function(data){			
+		$('#storeid').val(data.value);
+		alert(JSON.stringify($(this).attr()));
+		//layer.msg($(this).attr('tel'));
+		form.render();
+	});
+
+});
+</script>
+<include file="Public:footer" />
