@@ -48,9 +48,9 @@
 						<td>{$v.commodity_name}</td>
 						<td>{$v.in_out_date}</td>
 						<td>{$status[$v['statue']]}</td>
-						<td>{$v.amount}</td>
-						<td>{$v.amount}</td>
-						<td>{$v.amount}</td>
+						<td>{$tag[$v['statue']]}{$v.amount}</td>
+						<td>{$v.now_amount - (($tag[$v['statue']]).($v.amount))}</td>
+						<td>{$v.now_amount}</td>
 					</tr>
 					{/volist}
 				</tbody>

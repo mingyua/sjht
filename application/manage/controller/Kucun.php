@@ -96,7 +96,7 @@ class Kucun extends Auth{
 			$timearr=$time[0]." 到 ".$time[1];					
 			
 		}
-		$map['A.store_code']=['eq','000024'];//$this->dpid
+		$map['A.store_code']=['eq',$this->dpid];//$this->dpid
 		if(is_array($input)){
 			foreach($input as $k=>$v){
 					$map["A.".$k]=['eq',$v];	
@@ -107,9 +107,26 @@ class Kucun extends Auth{
 		$join = [
 		    ['tbl_commodity C','A.commodity_code=C.commodity_code'],
 		];
-		$data=db('in_out_log')->alias('A')->where($map)->join($join)->where('C.Store_code','eq','000024')->field('A.*,C.commodity_name')->paginate(14, false, ['query' => request()->param()]);
+		$data=db('in_out_log')->alias('A')->where($map)->join($join)->where('C.Store_code','eq',$this->dpid)->field('A.*,C.commodity_name')->order('in_out_date DESC')->paginate(14, false, ['query' => request()->param()]);
+		$arr=[
+		'0'=>['id'=>1,'name'=>'进货单','tag'=>'+'],
+		'1'=>['id'=>2,'name'=>'调货单出库','tag'=>'+'],
+		'2'=>['id'=>3,'name'=>'调货单入库','tag'=>'+'],
+		'3'=>['id'=>4,'name'=>'给供应商退货单','tag'=>'+'],
+		'4'=>['id'=>5,'name'=>'报损单','tag'=>'+'],
+		'5'=>['id'=>6,'name'=>'销售单','tag'=>'+'],
+		'6'=>['id'=>7,'name'=>'前台退货单','tag'=>'+'],
+		'7'=>['id'=>8,'name'=>'前台作废单','tag'=>'-'],
+		'8'=>['id'=>9,'name'=>'盘点调整减少','tag'=>'-'],
+		'9'=>['id'=>10,'name'=>'盘点调整增加','tag'=>'+']
+		];
+		
+		
+		
 		$status=['1'=>'进货单','2'=>'调货单出库','3'=>'调货单入库','4'=>'给供应商退货单','5'=>'报损单','6'=>'销售单','7'=>'前台退货单','8'=>'前台作废单','9'=>'盘点调整减少','10'=>'盘点调整增加'];
+		$tag=['1'=>'+','2'=>'-','3'=>'+','4'=>'-','5'=>'-','6'=>'-','7'=>'+','8'=>'+-','9'=>'-','10'=>'+'];
 		$this->assign('status',$status);
+		$this->assign('tag',$tag);
 		$this->assign('timearr',$timearr);
 		$this->assign('sele',isset($input['statue'])?$input['statue']:'');
 		$this->assign('code',isset($input['commodity_code']) ? $input['commodity_code']:'');

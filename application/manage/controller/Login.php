@@ -6,9 +6,46 @@ class Login extends Controller
 {
     public function index()
     {
-    	
-    	$admin=Db::name('admin_user')->select();
-    	//dump($admin);
+    $input=input();	
+    if(isset($input['usercode'])){
+				$map['TEL']=$input['usercode'];
+				$map['Store_pass']=$input['pwd'];				
+				$map1['TEL']=$input['usercode'];
+				$map1['Cashier_pass']=$input['pwd'];				
+				$admin=Db::name('user')->where($map)->find();
+				$store=Db::name('store')->where($map)->find();
+				$syy=Db::name('cashier')->where($map1)->find();				
+				if($admin){
+					$stcode=db('store')->where('user_code','EQ',$input['usercode'])->value('store_code');
+					session('uid',$admin['TEL']);
+					session('stcode',$stcode);
+					session('uname',$admin['user_code']);
+					session('sjname',$admin['store_name']);
+					session('access',1);
+				   $this->redirect('index/index',302); 
+				}else if($store){
+					session('uid',$store['TEL']);
+					session('uname',$store['user_code']);
+					session('stcode',$store['store_code']);
+					session('sjname',$store['store_name']);
+					session('access',2);
+					$this->redirect('index/index',302); 
+				}else if($syy){
+					$m['Store_code']=$syy['Store_code'];
+					$stinfo=Db::name('store')->where($m)->find();
+					session('uid',$syy['TEL']);
+					session('uname',$syy['user_code']);
+					session('stcode',$syy['Store_code']);
+					session('sjname',$stinfo['store_name']);				
+					session('access',0);						
+					$this->redirect('index/index',302); 
+				}
+
+		die();
+    }
+    
+   
+    $admin=Db::name('admin_user')->select();    	
 	$this->view->engine->layout(false); 
 	return $this->fetch();
     }
