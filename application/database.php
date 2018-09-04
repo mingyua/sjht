@@ -13,13 +13,13 @@ return [
     // 数据库类型
     'type'            => 'sqlsrv',
     // 服务器地址
-    'hostname'        => '114.215.197.61',
+    'hostname'        => '',
     // 数据库名
-    'database'        => 'XiaoCaoPos',
+    'database'        => '',
     // 用户名
-    'username'        => 'sa',
+    'username'        => '',
     // 密码
-    'password'        => 'XiaoCao.520',
+    'password'        => '',
     // 端口
     'hostport'        => '',
     // 连接dsn
